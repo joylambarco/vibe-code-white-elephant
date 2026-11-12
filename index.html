@@ -41,10 +41,13 @@ svg{width:100%;height:auto;display:block}
 .btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
 button{background:var(--panel);color:var(--ink);border:1px solid #444;border-radius:8px;padding:.5rem .9rem;font-size:1rem;cursor:pointer}
 button:hover{border-color:var(--red2)}
+#tip{position:absolute;display:none;z-index:5;width:min(330px,90%);background:#f5f2ee;color:#0b0b0b;border-top:5px solid #C8102E;border-radius:6px;padding:10px 14px 12px;box-shadow:0 10px 28px rgba(0,0,0,.55);pointer-events:none;font-size:.93rem}
+#tip h3{margin:0 0 6px;font-size:1rem}#tip ol{margin:0;padding-left:1.3rem;line-height:1.45}#tip .r{color:#C8102E;font-weight:700}
+rect[data-zone]{cursor:help}
 </style></head><body><div class="wrap">
-<header><h1>White Elephant <span>in the Room</span></h1><div class="ver">v0.2 · 12 Nov 2026 · vibe-coded mock-up</div></header>
+<header><h1>White Elephant <span>in the Room</span></h1><div class="ver">v0.3 · 12 Nov 2026 · vibe-coded mock-up</div></header>
 <p class="tag">A hybrid community space for <b>hard conversations</b> and for <b>nuanced conversations about emerging technology</b>. Practice with AI, pair up online, take the stage in person. The swap pile holds two kinds of gifts: <b style="color:#E8344E">red</b> = a hard or nuanced question, <b>white</b> = an AI win that isn't whole cloth, musicians and teachers using AI to do more of their own work. Vibe-coded for a music school AI think tank. A sketch, not an official page of any school.</p>
-<svg viewBox="0 0 680 420" role="img" aria-label="A white elephant with a red bow walks from the online room to the swap pile to the Pecha Kucha stage.">
+<div id="stagewrap" style="position:relative"><svg viewBox="0 0 680 420" role="img" aria-label="A white elephant with a red bow walks from the online room to the swap pile to the Pecha Kucha stage.">
 <defs><radialGradient id="sp" cx="50%" cy="0%" r="100%"><stop offset="0" stop-color="#E8344E" stop-opacity=".5"/><stop offset="1" stop-color="#E8344E" stop-opacity="0"/></radialGradient></defs>
 <text x="30" y="30" fill="#f5f2ee" font-size="14" font-weight="700">ONLINE ROOM</text>
 <rect x="30" y="42" width="160" height="96" rx="8" fill="#171717" stroke="#C8102E" stroke-width="1"/>
@@ -64,11 +67,11 @@ button:hover{border-color:var(--red2)}
 <rect id="bar" x="504" y="118" width="0" height="6" rx="3" fill="#E8344E"/>
 <path class="spot" d="M555 150 L500 300 L645 300 L590 150 Z" fill="url(#sp)" opacity=".3"/>
 <g id="keys"></g>
-<g class="gift" data-k="hard" onclick="pick(this)"><rect x="236" y="324" width="38" height="36" rx="4" fill="#C8102E"/><rect x="251" y="324" width="8" height="36" fill="#000"/></g>
-<g class="gift" data-k="win" onclick="pick(this)"><rect x="280" y="316" width="44" height="44" rx="4" fill="#f5f2ee"/><rect x="298" y="316" width="8" height="44" fill="#C8102E"/></g>
-<g class="gift" data-k="hard" onclick="pick(this)"><rect x="330" y="328" width="34" height="32" rx="4" fill="#C8102E"/><rect x="343" y="328" width="8" height="32" fill="#000"/></g>
-<g class="gift" data-k="win" onclick="pick(this)"><rect x="370" y="320" width="40" height="40" rx="4" fill="#f5f2ee"/><rect x="386" y="320" width="8" height="40" fill="#C8102E"/></g>
-<g class="gift" data-k="hard" onclick="pick(this)"><rect x="416" y="330" width="30" height="30" rx="4" fill="#1c1c1c" stroke="#E8344E"/><rect x="427" y="330" width="8" height="30" fill="#E8344E"/></g>
+<g class="gift" data-zone="gifts" data-k="hard" onclick="pick(this)"><rect x="236" y="324" width="38" height="36" rx="4" fill="#C8102E"/><rect x="251" y="324" width="8" height="36" fill="#000"/></g>
+<g class="gift" data-zone="gifts" data-k="win" onclick="pick(this)"><rect x="280" y="316" width="44" height="44" rx="4" fill="#f5f2ee"/><rect x="298" y="316" width="8" height="44" fill="#C8102E"/></g>
+<g class="gift" data-zone="gifts" data-k="hard" onclick="pick(this)"><rect x="330" y="328" width="34" height="32" rx="4" fill="#C8102E"/><rect x="343" y="328" width="8" height="32" fill="#000"/></g>
+<g class="gift" data-zone="gifts" data-k="win" onclick="pick(this)"><rect x="370" y="320" width="40" height="40" rx="4" fill="#f5f2ee"/><rect x="386" y="320" width="8" height="40" fill="#C8102E"/></g>
+<g class="gift" data-zone="gifts" data-k="hard" onclick="pick(this)"><rect x="416" y="330" width="30" height="30" rx="4" fill="#1c1c1c" stroke="#E8344E"/><rect x="427" y="330" width="8" height="30" fill="#E8344E"/></g>
 <text x="110" y="386" fill="#a8a29a" font-size="12" text-anchor="middle">Donut-style pairs, 1:1</text>
 <text x="340" y="386" fill="#a8a29a" font-size="12" text-anchor="middle">The swap: click a gift</text>
 <text x="572" y="386" fill="#a8a29a" font-size="12" text-anchor="middle">20 slides × 20 seconds</text>
@@ -92,10 +95,16 @@ button:hover{border-color:var(--red2)}
 <circle cx="-78" cy="-112" r="3.5" fill="#111"/>
 <path d="M-84 -86 Q-78 -80 -70 -84" fill="none" stroke="#999" stroke-width="1.2" stroke-linecap="round"/>
 </g></g></g>
-</svg>
+<rect x="250" y="100" width="180" height="38" rx="8" fill="#171717" stroke="#C8102E"/>
+<text x="340" y="124" fill="#f5f2ee" font-size="13" font-weight="700" text-anchor="middle"># online commons</text>
+<rect data-zone="donut" x="30" y="42" width="160" height="96" fill="transparent"/>
+<rect data-zone="ai" x="250" y="42" width="180" height="50" fill="transparent"/>
+<rect data-zone="commons" x="250" y="100" width="180" height="38" fill="transparent"/>
+<rect data-zone="pecha" x="490" y="42" width="160" height="96" fill="transparent"/>
+</svg><div id="tip" role="tooltip"></div></div>
 <div class="card" id="card"><div class="kind">The swap</div><h2>Click a gift, or wait for the elephant</h2><p>Red gifts are questions worth talking through. White gifts are AI wins where people used the tool to do more of their own work, not to skip it.</p></div>
 <div class="btns"><button id="pp">Pause</button><button onclick="pick(null,'hard')">Draw a red gift</button><button onclick="pick(null,'win')">Draw a white gift</button></div>
-<div class="legend"><span><b>Red gift</b> = a hard or nuanced conversation</span><span><b>White gift</b> = an AI win that isn't whole cloth</span><span><b>Keyboard</b> = keys light as the elephant walks</span></div>
+<div class="legend"><span><b>Red gift</b> = a hard or nuanced conversation</span><span><b>White gift</b> = an AI win that isn't whole cloth</span><span><b>Hover</b> the rooms, the commons, the stage and the gifts for topic lists</span><span><b>Keyboard</b> = keys light as the elephant walks</span></div>
 </div>
 <script>
 const NS='http://www.w3.org/2000/svg';
@@ -151,5 +160,22 @@ if(cur.k==='hard'&&Math.random()<.4){setMsg('Oops, I got that wrong. Owning it.'
 ele.classList.remove('onstage');setMsg('Back to practice');await walk(110)}}
 let t=0;setInterval(()=>{if(paused)return;t=(t+1)%400;const s=Math.floor(t/20)+1,r=20-(t%20);document.getElementById('slide').textContent='Slide '+s+' of 20';document.getElementById('secs').textContent='0:'+String(r).padStart(2,'0')+' · Pecha Kucha';document.getElementById('bar').setAttribute('width',132*((t%20)+1)/20)},1000);
 document.getElementById('pp').onclick=function(){paused=!paused;this.textContent=paused?'Play':'Pause'};
+const Z={
+donut:{h:"Donut-style pairs: conversation starters",l:["What's one way you've used AI this month?","Where do you draw your own line?","What worries you most for your field?","One thing AI made easier, and one it made worse?","Tell me about a time you changed your mind.","What would you never automate?","What do your students or teachers not know you think?","What question do you wish someone would ask you?"]},
+commons:{h:"# online commons: channels",l:["# welcome-and-guidelines","# show-your-process: how you used it, not just the result","# practice-room-tools","# ask-before-assuming","# voice-and-consent","# assignment-redesigns","# wins-not-whole-cloth","# repair-and-check-ins"]},
+ai:{h:"Rehearse with AI: ways to practice",l:["Play the other person, kindly and realistically","Ask me questions before I speak","Find the assumption I'm making","Try my first sentence three ways","Practice saying \"I got that wrong\"","Give me hints, not a script","Debrief after the real conversation"]},
+pecha:{h:"Pecha Kucha nights: talk topics",l:["My instrument, before and after AI","The practice-room tool I'd never give up","A cloned voice: what I'd allow, what I wouldn't","What my teacher taught me that no model could","Crediting AI in liner notes and programs","One assignment I redesigned because of AI","The time AI got the music wrong","What \"original\" means to me now"]},
+gifts:{h:"In the swap pile",l:null}};
+const tip=document.getElementById('tip'),wrap=document.getElementById('stagewrap');
+function showTip(z,cx,cy){const d=Z[z];if(!d)return;let items=d.l;
+if(!items){items=G.hard.slice(0,4).map(g=>'<span class="r">Red</span> '+g.t).concat(G.win.slice(0,4).map(g=>'<b>White</b> '+g.t))}
+tip.innerHTML='<h3></h3><ol>'+items.map(i=>'<li>'+(d.l?i.replace(/&/g,'&amp;').replace(/</g,'&lt;'):i)+'</li>').join('')+'</ol>';tip.querySelector('h3').textContent=d.h;
+tip.style.display='block';const W=wrap.clientWidth,tw=tip.offsetWidth,th=tip.offsetHeight;
+let left=cx+16,top=cy+16;if(left+tw>W)left=Math.max(0,cx-tw-16);if(top+th>wrap.clientHeight+120)top=Math.max(0,cy-th-16);
+tip.style.left=left+'px';tip.style.top=top+'px'}
+function zoneAt(e){const el=e.target.closest&&e.target.closest('[data-zone]');return el?el.dataset.zone:null}
+wrap.addEventListener('mousemove',e=>{const z=zoneAt(e),r=wrap.getBoundingClientRect();z?showTip(z,e.clientX-r.left,e.clientY-r.top):tip.style.display='none'});
+wrap.addEventListener('mouseleave',()=>tip.style.display='none');
+wrap.addEventListener('touchstart',e=>{const z=zoneAt(e),r=wrap.getBoundingClientRect(),t=e.touches[0];z?showTip(z,t.clientX-r.left,t.clientY-r.top):tip.style.display='none'},{passive:true});
 place();loop();
 </script></body></html>
